@@ -1,12 +1,26 @@
 {
+  "name": "disappear-cli",
+  "version": "1.0.0",
+  "bin": "./src/main.js",
   "dependencies": {
     "bip39": "^3.1.0",
     "commander": "^12.1.0",
     "inquirer": "^8.2.4",
-    "jest": "^29.7.0",
     "node-fetch": "^3.3.2"
   },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "jest": "^29.7.0",
+    "pkg": "^5.8.1"
+  },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "node build.js && pkg dist/main.js --targets node16-linux-x64,node16-macos-x64 --output build/disappear-cli"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/src/**/*.test.js"
+    ]
   }
 }
